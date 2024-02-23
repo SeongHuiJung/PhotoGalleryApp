@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import PhotosUI //photo 와 관련된 모듈 import
+import PhotosUI // photo 와 관련된 모듈 import
 
 class ViewController: UIViewController {
     
@@ -25,14 +25,14 @@ class ViewController: UIViewController {
         photoCollectionView.dataSource = self
 
         let layout = UICollectionViewFlowLayout()
-        //아이템 하나당 사이즈 설정
+        // 아이템 하나당 사이즈 설정
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2 - 0.5 , height: 200)
         
-        //아이템 끼리의 "가로" 사이 간격
+        // 아이템 끼리의 "가로" 사이 간격
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
         
-        //photoCollectionView에 layout 적용
+        // photoCollectionView에 layout 적용
         photoCollectionView.collectionViewLayout = layout
     }
     
@@ -48,21 +48,21 @@ class ViewController: UIViewController {
     }
     
     @objc func checkPermission () {
-        //권한 허용된 경우
+        // 권한 허용된 경우
         if PHPhotoLibrary.authorizationStatus() == .authorized || PHPhotoLibrary.authorizationStatus() == .limited {
             
                 self.showGallery()
             
         }
-        //권한 거부된 경우
+        // 권한 거부된 경우
         else if PHPhotoLibrary.authorizationStatus() == .denied{
             
                 self.showAuthorizationDeniedAlert()
             
         }
-        //권한 설정을 아직 물어보지 않은 경우
+        // 권한 설정을 아직 물어보지 않은 경우
         else if PHPhotoLibrary.authorizationStatus() == .notDetermined{
-            //권한 설정 띄우기
+            // 권한 설정 띄우기
             
             PHPhotoLibrary.requestAuthorization { status in
                 //권한 설정 이후에 아무것도 되지 않기 때문에 다시 해당 함수를 불러옴
